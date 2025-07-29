@@ -17,6 +17,9 @@ const firebaseAccount = JSON.parse(
     Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON, 'base64').toString('utf8')
 );
 
+console.log('서비스 계정 client_email:', firebaseAccount.client_email);
+console.log('서비스 계정 project_id:', firebaseAccount.project_id);
+
 admin.initializeApp({
     credential: admin.credential.cert(firebaseAccount),
 });
