@@ -1,11 +1,7 @@
 import dotenv from 'dotenv';
 import { WebSocketServer } from 'ws';
 import { createClient } from '@supabase/supabase-js';
-import { readFile } from 'fs/promises';
 import admin from 'firebase-admin';
-
-const jsonFormat = { "Content-Type": "application/json" };
-
 
 dotenv.config();
 
@@ -16,8 +12,10 @@ const supabase = createClient(
 );
 
 // firebase 설정
-const jsonString = await readFile('./firebaseAccount.json', 'utf-8');
-const firebaseAccount = JSON.parse(jsonString);
+// const jsonString = await readFile('./firebaseAccount.json', 'utf-8');
+const firebaseAccount = JSON.parse(
+    Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON, 'base64').toString('utf8')
+);
 
 admin.initializeApp({
     credential: admin.credential.cert(firebaseAccount),
