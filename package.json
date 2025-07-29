@@ -1,0 +1,16 @@
+{
+  "name": "bread-hungry-app-chatting",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.3",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "ws": "^8.18.3"
+  }
+}
